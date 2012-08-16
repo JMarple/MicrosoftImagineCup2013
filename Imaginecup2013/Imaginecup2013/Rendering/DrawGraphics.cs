@@ -11,7 +11,8 @@ namespace Imaginecup2013.Rendering
     {
         public void draw(Leoni game, Texture2D map)
         {
-            game.spriteBatch.Begin();
+            //Draw Post processing
+            game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, game.postEffect);
             game.spriteBatch.Draw(map, new Rectangle(0, 0, game.screenSizeWidth, game.screenSizeHeight), Color.White);
             game.spriteBatch.End();
         }

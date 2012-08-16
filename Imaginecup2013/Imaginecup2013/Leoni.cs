@@ -33,6 +33,7 @@ namespace Imaginecup2013
 
         /* Effects */
         public Effect mainEffect;
+        public Effect postEffect;
 
         /* Input */
         public KeyboardState KeyboardState;
