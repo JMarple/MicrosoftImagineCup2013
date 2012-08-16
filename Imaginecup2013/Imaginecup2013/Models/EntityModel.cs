@@ -19,6 +19,7 @@ namespace Imaginecup2013
         /// </summary>
         public Matrix Transform;
         Matrix[] boneTransforms;
+        Effect effect;
 
 
         /// <summary>
@@ -33,16 +34,23 @@ namespace Imaginecup2013
             this.entity = entity;
             this.model = model;
             this.Transform = transform;
+            effect = (game as Leoni).mainEffect;
 
             //Collect any bone transformations in the model itself.
             //The default cube model doesn't have any, but this allows the EntityModel to work with more complicated shapes.
             boneTransforms = new Matrix[model.Bones.Count];
-            foreach (ModelMesh mesh in model.Meshes)
+            
+            /*foreach (ModelMesh mesh in model.Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.EnableDefaultLighting();
                 }
+            }*/
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (ModelMeshPart part in mesh.MeshParts)
+                    part.Effect = effect;
             }
         }
 
@@ -59,11 +67,18 @@ namespace Imaginecup2013
             model.CopyAbsoluteBoneTransformsTo(boneTransforms);
             foreach (ModelMesh mesh in model.Meshes)
             {
-                foreach (BasicEffect effect in mesh.Effects)
+                foreach (Effect effect in mesh.Effects)
                 {
+                    /*
                     effect.World = boneTransforms[mesh.ParentBone.Index] * worldMatrix;
                     effect.View = (Game as Leoni).Camera.ViewMatrix;
-                    effect.Projection = (Game as Leoni).Camera.ProjectionMatrix;
+                    effect.Projection = (Game as Leoni).Camera.ProjectionMatrix;*/
+
+                    effect.CurrentTechnique = effect.Techniques["Simple"];
+                    effect.Parameters["World"].SetValue(boneTransforms[mesh.ParentBone.Index] * worldMatrix);
+                    effect.Parameters["View"].SetValue((Game as Leoni).Camera.ViewMatrix);
+                    effect.Parameters["Projection"].SetValue((Game as Leoni).Camera.ProjectionMatrix);
+                    
                 }
                 mesh.Draw();
             }

@@ -21,10 +21,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Models\playground.xnb</Output>
-      <Time>2012-06-27T00:07:31.8549858-04:00</Time>
+      <Time>2012-08-16T12:48:46.3882251-04:00</Time>
       <Dependency>
         <Key>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\obj\x86\Debug\Models\playground_0.xml</Key>
-        <Value>2012-08-16T00:28:56.226253-04:00</Value>
+        <Value>2012-08-16T12:53:57.3330101-04:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -34,7 +34,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\MainEffect.xnb</Output>
-      <Time>2012-08-15T00:14:22.6353085-04:00</Time>
+      <Time>2012-08-16T13:24:23.240446-04:00</Time>
     </Item>
     <Item>
       <Source>Effects\PostEffect.fx</Source>
@@ -57,6 +57,35 @@
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\obj\x86\Debug\Models\playground_0.xml</Output>
+      <Time>2012-08-16T12:48:46.3882251-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Terrain\playground.fbx</Source>
+      <Name>Terrain\playground</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Terrain\playground.xnb</Output>
+      <Time>2012-06-27T00:07:31.8549858-04:00</Time>
+      <Dependency>
+        <Key>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\obj\x86\Debug\Terrain\playground_0.xml</Key>
+        <Value>2012-08-16T12:53:56.911986-04:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Terrain\playgroundTex.jpg</Source>
+      <Name>Terrain\playgroundTex</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Terrain\playgroundTex.xnb</Output>
+      <Time>2012-08-16T12:51:08.8013706-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Terrain\playground.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\obj\x86\Debug\Terrain\playground_0.xml</Output>
       <Time>2012-06-27T00:07:31.8549858-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>

@@ -33,7 +33,7 @@ namespace Imaginecup2013.Setup
             int[] indices;
             TriangleMesh.GetVerticesAndIndicesFromModel(model, out vertices, out indices);
             var mesh = new StaticMesh(vertices, indices, new AffineTransform(new Vector3(0, -40, 0)));
-
+            
             //Add it to the space!
             game.space.Add(mesh);
 

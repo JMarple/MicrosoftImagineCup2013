@@ -21,3 +21,5 @@ C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\BEPUphysics.
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\BEPUphysics.xml
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\obj\x86\Debug\Imaginecup2013.csprojResolveAssemblyReference.cache
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Terrain\playground.xnb
+C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Terrain\playgroundTex.xnb

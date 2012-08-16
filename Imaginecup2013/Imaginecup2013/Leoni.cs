@@ -95,6 +95,7 @@ namespace Imaginecup2013
 
             //Effects
             mainEffect = Content.Load<Effect>("Effects\\MainEffect");
+            postEffect = Content.Load<Effect>("Effects\\PostEffect");
 
             //Load and initilize the world
             InitializeWorld initWorld = new InitializeWorld(this);            

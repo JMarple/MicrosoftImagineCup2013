@@ -2,3 +2,5 @@ Content\Models\cube.xnb
 Content\Models\playground.xnb
 Content\Effects\MainEffect.xnb
 Content\Effects\PostEffect.xnb
+Content\Terrain\playground.xnb
+Content\Terrain\playgroundTex.xnb
