@@ -5,6 +5,8 @@ using System.Text;
 using BEPUphysics;
 using BEPUphysics.Entities.Prefabs;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using BEPUphysics.MathExtensions;
 
 namespace Imaginecup2013.Setup
 {
@@ -18,21 +20,31 @@ namespace Imaginecup2013.Setup
 
         public void setup(Leoni game)
         {
-            //Create ground
-            Box ground = new Box(Vector3.Zero, 30, 1, 30);
-            game.space.Add(ground);
+            //initClasses
+            InitializeEntityModel eModels = new InitializeEntityModel();
+            InitializeStaticModel sModels = new InitializeStaticModel();
+
+            /** Static Models **/
+            sModels.add("Models//playground", game, game.Content.Load<Texture2D>("Terrain\\playgroundTex"), new AffineTransform(new Vector3(0, -40, 0)));
+
+            /** Entity Models **/
+            Model CubeModel = game.Content.Load<Model>("Models//Cube");
+            Texture RustTex = game.Content.Load<Texture2D>("Terrain//playgroundTex");
+            
+            //Ground
+            eModels.add(new Box(Vector3.Zero, 30, 1, 30), CubeModel, game, RustTex);
 
             //Create Walls
-            game.space.Add(new Box(new Vector3(14.5f, 5, 0), 1, 10, 30));
-            game.space.Add(new Box(new Vector3(0, 5, 14.5f), 30, 10, 1));
+            eModels.add(new Box(new Vector3(14.5f, 5, 0), 1, 10, 30), CubeModel, game, RustTex);
+            eModels.add(new Box(new Vector3(0, 5, 14.5f), 30, 10, 1), CubeModel, game, RustTex);
 
             //Partial Roof
-            game.space.Add(new Box(new Vector3(10, 10, 10), 10, 0, 10));
+            eModels.add(new Box(new Vector3(10, 10, 10), 10, 1, 10), CubeModel, game, RustTex);
 
-            //Other things in demo
-            game.space.Add(new Box(new Vector3(0, 2, 0), 1, 1, 1, 1));
-            game.space.Add(new Box(new Vector3(0, 4, 0), 1, 1, 1, 1));
-            game.space.Add(new Box(new Vector3(0, 6, 0), 1, 1, 1, 1));    
+            //Cube Demo
+            eModels.add(new Box(new Vector3(0, 2, 0), 1, 1, 1, 1), CubeModel, game, RustTex);
+            eModels.add(new Box(new Vector3(0, 4, 0), 1, 1, 1, 1), CubeModel, game, RustTex);
+            eModels.add(new Box(new Vector3(0, 6, 0), 1, 1, 1, 1), CubeModel, game, RustTex);            
         }
     }
 }

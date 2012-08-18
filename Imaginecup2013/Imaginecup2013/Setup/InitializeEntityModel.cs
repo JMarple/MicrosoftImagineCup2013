@@ -11,30 +11,42 @@ using BEPUphysics.MathExtensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using BEPUphysics.Entities;
+using BEPUphysics.Entities.Prefabs;
 
 namespace Imaginecup2013.Setup
 {
     class InitializeEntityModel
     {
         //Constructor
-        public InitializeEntityModel(Model model, Leoni game, Texture tex, Entity entity, AffineTransform pos)
+        public InitializeEntityModel(Entity e, Model model, Leoni game, Texture tex)
         {
-            setup(model, game, tex, entity, pos);
+            add(e, model, game, tex);
         }
         //Blank Constructor
         public InitializeEntityModel() { }
 
-        public void setup(Model model, Leoni game, Texture tex, Entity entity, AffineTransform pos)
+        public void add(Entity e, Model model, Leoni game, Texture tex)
         {
-            
-            game.space.Add(entity);
-            
-            //Make it visible too.
-            EntityModel tmpModel = new EntityModel(entity, model, entity.WorldTransform, game, game.textureEffect);
-            tmpModel.tex = tex;
-            entity.Tag = tmpModel;
+            //Add collisions
+            game.space.Add(e);
 
-            game.Components.Add(tmpModel);
+            //Get the eneity now in space
+            Entity _e = game.space.Entities[game.space.Entities.Count - 1];
+            Box _box = _e as Box;
+            if (_box != null)
+            {
+                //Setup Entity Model
+                Matrix scaling = Matrix.CreateScale(_box.Width, _box.Height, _box.Length);
+                EntityModel eModel = new EntityModel(_e, model, scaling, game, game.textureEffect);
+                eModel.tex = tex;
+
+                //Add the new model to the world
+                game.Components.Add(eModel);
+
+                //Tag the model to the collision box
+                _e.Tag = eModel;
+            }
+
         }
     }
 }

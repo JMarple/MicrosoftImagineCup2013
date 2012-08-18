@@ -18,12 +18,12 @@ namespace Imaginecup2013.Setup
         //Constructor
         public InitializeStaticModel(String file, Leoni game, Texture tex, AffineTransform pos)
         {
-            setup(file, game, tex, pos);
+            add(file, game, tex, pos);
         }
         //Blank Constructor
         public InitializeStaticModel(){  }
 
-        public void setup(String file, Leoni game, Texture tex, AffineTransform pos)
+        public void add(String file, Leoni game, Texture tex, AffineTransform pos)
         {
             //Load Model
             Model model = game.Content.Load<Model>(file);
