@@ -1,29 +1,4 @@
-/** Global Variables **/
-float4x4 World;
-float4x4 View;
-float4x4 Projection;
-float Ambient = 0.2;
-
-/** Functions **/
-float DotProduct(float3 lightPos, float3 pos3D, float3 normal)
-{
-    float3 lightDir = normalize(pos3D - lightPos);
-    return dot(-lightDir, normal);
-}
-
-/** Input/Ouput Structures **/
-struct VertexShaderInput
-{
-    float4 Position : POSITION0;	
-};
-
-struct VertexShaderOutput
-{
-    float4 Position : POSITION0;
-	float2 TexCoords : TEXCOORD0;
-	float3 Normal : TEXCOORD1;
-	float3 Position3D : TEXCOORD2;
-};
+#include "EffectVar.fxh"
 
 /** Vertex Shader **/
 VertexShaderOutput SimpleVertex( float4 inPos : POSITION0, float3 inNormal: NORMAL0, float2 inTexCoords : TEXCOORD0)
@@ -47,17 +22,17 @@ float4 SimplePixel(VertexShaderOutput input) : COLOR0
 	//Light Position in the world
     float3 LightPosition = float3(0, 30, 0);
 
-	//Set color of specific pixel (too be changed to a texture)
-	float4 baseColor = float4(0.5, 0.5, 0.5, 1);
+	//Get Texture
+	float4 texColor = tex2D(textureSampler, input.TexCoords);	
 	
 	//Get Diffuse Lighting
 	float diffuseLightingFactor = DotProduct(LightPosition, input.Position3D, input.Normal);
    
-	return baseColor*(diffuseLightingFactor+Ambient);
+	return texColor*(diffuseLightingFactor+Ambient);
 }
 
 /** Technique Simple **/
-technique Simple
+technique Main
 {
     pass Pass1
     {

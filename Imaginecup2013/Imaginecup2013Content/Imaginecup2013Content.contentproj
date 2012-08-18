@@ -42,14 +42,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Effects\MainEffect.fx">
-      <Name>MainEffect</Name>
+    <Compile Include="Effects\PreEffects\SimpleEffect.fx">
+      <Name>SimpleEffect</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Effects\PostEffect.fx">
+    <Compile Include="Effects\PostEffects\PostEffect.fx">
       <Name>PostEffect</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
@@ -67,6 +67,20 @@
       <Name>playgroundTex</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Effects\PreEffects\EffectVar.fxh">
+      <Name>EffectVar</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Effects\PreEffects\TexturingEffect.fx">
+      <Name>TexturingEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

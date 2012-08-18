@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using BEPUphysics.Entities.Prefabs;
 using Microsoft.Xna.Framework.Graphics;
 using BEPUphysics.Entities;
+using BEPUphysics.MathExtensions;
 
 namespace Imaginecup2013.Setup
 {
@@ -20,9 +21,12 @@ namespace Imaginecup2013.Setup
             InitializeGround ground = new InitializeGround(game);
 
             //Initilize models in the world
-            InitializeModel models = new InitializeModel();
-            models.setup("Models//playground", game);
+            InitializeStaticModel sModels = new InitializeStaticModel();
+            sModels.setup("Models//playground", game, game.Content.Load<Texture2D>("Terrain\\playgroundTex"), new AffineTransform(new Vector3(0, -40, 0)));
 
+            //InitializeEntityModel eModels = new InitializeEntityModel();
+            //eModels.setup("Models//Cube", game, game.Content.Load<Texture2D>("Terrain\\playgroundTex"), new AffineTransform(new Vector3(2, 2, 0) ) );
+            
             #region DemoCode
             /** Only Temporary **/
             Model CubeModel = game.Content.Load<Model>("Models//cube");

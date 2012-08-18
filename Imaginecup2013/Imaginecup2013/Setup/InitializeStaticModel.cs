@@ -13,17 +13,17 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Imaginecup2013.Setup
 {
-    class InitializeModel
+    class InitializeStaticModel
     {
         //Constructor
-        public InitializeModel(String file, Leoni game)
+        public InitializeStaticModel(String file, Leoni game, Texture tex, AffineTransform pos)
         {
-            setup(file, game);
+            setup(file, game, tex, pos);
         }
         //Blank Constructor
-        public InitializeModel(){  }
+        public InitializeStaticModel(){  }
 
-        public void setup(String file, Leoni game)
+        public void setup(String file, Leoni game, Texture tex, AffineTransform pos)
         {
             //Load Model
             Model model = game.Content.Load<Model>(file);
@@ -32,13 +32,16 @@ namespace Imaginecup2013.Setup
             Vector3[] vertices;
             int[] indices;
             TriangleMesh.GetVerticesAndIndicesFromModel(model, out vertices, out indices);
-            var mesh = new StaticMesh(vertices, indices, new AffineTransform(new Vector3(0, -40, 0)));
-            
+            var mesh = new StaticMesh(vertices, indices, pos);
+
             //Add it to the space!
             game.space.Add(mesh);
 
             //Make it visible too.
-            game.Components.Add(new StaticModel(model, mesh.WorldTransform.Matrix, game));
+            StaticModel tmpModel = new StaticModel(model, mesh.WorldTransform.Matrix, game, game.textureEffect);
+            tmpModel.tex = tex;  
+            
+            game.Components.Add(tmpModel);
         }
     }
 }

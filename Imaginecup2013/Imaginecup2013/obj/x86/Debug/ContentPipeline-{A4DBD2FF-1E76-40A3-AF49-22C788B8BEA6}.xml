@@ -28,24 +28,6 @@
       </Dependency>
     </Item>
     <Item>
-      <Source>Effects\MainEffect.fx</Source>
-      <Name>Effects\MainEffect</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\MainEffect.xnb</Output>
-      <Time>2012-08-16T13:24:23.240446-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Effects\PostEffect.fx</Source>
-      <Name>Effects\PostEffect</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PostEffect.xnb</Output>
-      <Time>2012-08-16T00:36:34.6684744-04:00</Time>
-    </Item>
-    <Item>
       <Source>Models\cube.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
@@ -87,6 +69,41 @@
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\obj\x86\Debug\Terrain\playground_0.xml</Output>
       <Time>2012-06-27T00:07:31.8549858-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\PostEffects\PostEffect.fx</Source>
+      <Name>Effects\PostEffects\PostEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PostEffects\PostEffect.xnb</Output>
+      <Time>2012-08-16T00:36:34.6684744-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\PreEffects\SimpleEffect.fx</Source>
+      <Name>Effects\PreEffects\SimpleEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PreEffects\SimpleEffect.xnb</Output>
+      <Time>2012-08-18T00:31:11.2955732-04:00</Time>
+      <Dependency>
+        <Key>Effects\PreEffects\EffectVar.fxh</Key>
+        <Value>2012-08-18T00:31:56.8881809-04:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Effects\PreEffects\TexturingEffect.fx</Source>
+      <Name>Effects\PreEffects\TexturingEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PreEffects\TexturingEffect.xnb</Output>
+      <Time>2012-08-18T01:19:57.840962-04:00</Time>
+      <Dependency>
+        <Key>Effects\PreEffects\EffectVar.fxh</Key>
+        <Value>2012-08-18T00:31:56.8881809-04:00</Value>
+      </Dependency>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

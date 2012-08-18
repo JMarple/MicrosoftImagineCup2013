@@ -13,8 +13,6 @@ C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\obj\x86\Debug\Imaginecup20
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\obj\x86\Debug\Imaginecup2013.pdb
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Models\cube.xnb
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Models\playground.xnb
-C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\MainEffect.xnb
-C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PostEffect.xnb
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Imaginecup2013.exe
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Imaginecup2013.pdb
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\BEPUphysics.dll
@@ -23,3 +21,6 @@ C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\obj\x86\Debug\Imaginecup20
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Terrain\playground.xnb
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Terrain\playgroundTex.xnb
+C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PostEffects\PostEffect.xnb
+C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PreEffects\SimpleEffect.xnb
+C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PreEffects\TexturingEffect.xnb

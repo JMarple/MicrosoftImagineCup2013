@@ -1,6 +1,7 @@
 Content\Models\cube.xnb
 Content\Models\playground.xnb
-Content\Effects\MainEffect.xnb
-Content\Effects\PostEffect.xnb
 Content\Terrain\playground.xnb
 Content\Terrain\playgroundTex.xnb
+Content\Effects\PostEffects\PostEffect.xnb
+Content\Effects\PreEffects\SimpleEffect.xnb
+Content\Effects\PreEffects\TexturingEffect.xnb

@@ -30,16 +30,16 @@ namespace Imaginecup2013
         public SpriteBatch spriteBatch;
         public Space space;
         public Camera Camera;
+        public Sphere cameraBox;
 
         /* Effects */
-        public Effect mainEffect;
+        public Effect simpleEffect;
+        public Effect textureEffect;
         public Effect postEffect;
 
         /* Input */
         public KeyboardState KeyboardState;
-        public MouseState MouseState;
-
-        public Sphere cameraBox;
+        public MouseState MouseState;        
 
         /* Update classes */
         UpdatePhysics updatePhysics;
@@ -94,8 +94,9 @@ namespace Imaginecup2013
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Effects
-            mainEffect = Content.Load<Effect>("Effects\\MainEffect");
-            postEffect = Content.Load<Effect>("Effects\\PostEffect");
+            simpleEffect = Content.Load<Effect>("Effects\\PreEffects\\SimpleEffect");
+            textureEffect = Content.Load<Effect>("Effects\\PreEffects\\TexturingEffect");
+            postEffect = Content.Load<Effect>("Effects\\PostEffects\\PostEffect");
 
             //Load and initilize the world
             InitializeWorld initWorld = new InitializeWorld(this);            
