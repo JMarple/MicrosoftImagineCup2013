@@ -44,13 +44,6 @@ namespace Imaginecup2013
         public KeyboardState KeyboardState;
         public MouseState MouseState;        
 
-        /* Update classes */
-        public UpdatePhysics updatePhysics;
-        public UpdateInput updateInput;
-        public SetupGraphics setupGraphics;
-        public SaveScene saveScene;
-        public DrawGraphics drawGraphics;
-
         /* Render Targets and Maps*/
         public RenderTarget2D baseTarget;
         public Texture2D baseMap;
@@ -72,18 +65,7 @@ namespace Imaginecup2013
 
             //Setup the camera.
             Camera = new Camera(this, new Vector3(0, 3, 10), 5);
-            
-            //New physics updater
-            updatePhysics = new UpdatePhysics();
-
-            //New Input updater
-            updateInput = new UpdateInput();
-
-            //Setup Graphics 
-            setupGraphics = new SetupGraphics();
-            saveScene = new SaveScene();
-            drawGraphics = new DrawGraphics();
-
+           
             //New World
             space = new Space();
 
@@ -96,16 +78,11 @@ namespace Imaginecup2013
             //Used to draw textures
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //Effects
-            simpleEffect = Content.Load<Effect>("Effects\\PreEffects\\SimpleEffect");
-            textureEffect = Content.Load<Effect>("Effects\\PreEffects\\TexturingEffect");
-            postEffect = Content.Load<Effect>("Effects\\PostEffects\\PostEffect");
-
-            //Fonts
-            fogFont = Content.Load<SpriteFont>("Font\\foglihten_48");
+            //Load Effects and fonts
+            InitializeLoader.load(this);
 
             //Load and initilize the world
-            InitializeWorld initWorld = new InitializeWorld(this);            
+            InitializeWorld.setup(this);            
         }      
 
       
@@ -115,10 +92,10 @@ namespace Imaginecup2013
         protected override void Update(GameTime gameTime)
         {
             //Handle input
-            updateInput.update(this);
+            UpdateInput.update(this);
 
             //Update physics engine
-            updatePhysics.update(this, gameTime);   
+            UpdatePhysics.update(this, gameTime);   
   
             base.Update(gameTime);
         }
@@ -127,16 +104,16 @@ namespace Imaginecup2013
         protected override void Draw(GameTime gameTime)
         {
             //Draw basic scene
-            setupGraphics.draw(this, baseTarget);
+            SetupGraphics.draw(this, baseTarget);
             
             //Trigger all drawing data
             base.Draw(gameTime);//Look at EntityModel and StaticModel for code
 
             //Save scene to map
-            baseMap = saveScene.save(this, baseTarget);
+            baseMap = SaveScene.save(this, baseTarget);
 
             //Draw to screen
-            drawGraphics.draw(this, baseMap);            
+            DrawGraphics.draw(this, baseMap);            
         }
     }
 }

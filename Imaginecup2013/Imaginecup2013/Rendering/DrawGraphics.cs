@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework;
 
 namespace Imaginecup2013.Rendering
 {
-    public class DrawGraphics
+    public static class DrawGraphics
     {
 
-        public void draw(Leoni game, Texture2D map)
+        public static void draw(Leoni game, Texture2D map)
         {
             //Draw Post processing
             game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, game.postEffect);

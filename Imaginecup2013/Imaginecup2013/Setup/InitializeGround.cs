@@ -10,15 +10,9 @@ using BEPUphysics.MathExtensions;
 
 namespace Imaginecup2013.Setup
 {
-    class InitializeGround 
+    static class InitializeGround 
     {
-        //Constructor
-        public InitializeGround(Leoni game)
-        {
-            setup(game);
-        }
-
-        public void setup(Leoni game)
+        public static void setup(Leoni game)
         {
             //initClasses
             InitializeEntityModel eModels = new InitializeEntityModel();

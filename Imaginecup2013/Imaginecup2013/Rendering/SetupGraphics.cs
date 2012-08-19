@@ -7,11 +7,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Imaginecup2013.Rendering
 {
-    public class SetupGraphics
+    public static class SetupGraphics
     {
+       
         //Setup graphics for drawing
-        public void draw(Leoni leoni, RenderTarget2D target)
+        public static void draw(Leoni leoni, RenderTarget2D target)
         {
+            
             //Background color
             leoni.GraphicsDevice.Clear(Color.CornflowerBlue);
 

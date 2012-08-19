@@ -7,15 +7,18 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Imaginecup2013.Physics
 {
-    public class UpdateCamera
+    public static class UpdateCamera
     {
         const int cameraSpeed = 10;
-        bool jumping;
-        int jumpCur;
-        double jumpLength = 20;//20 loops (60 frames per second)
-        float jumpThreshold = 3f;
 
-        public void update(Leoni leoni, GameTime gameTime)
+        //Jumping variables
+        static bool jumping;//Is player currently jumping?
+        static int jumpCur;//Current Jumping tick
+        static double jumpLength = 5;//20 loops (60 frames per second)
+        static float jumpThreshold = 1f;//+- JumpThreshold is how far up/down a hill they can go
+        static bool jumpComplete = false;//Is the up portion done?
+
+        public static void update(Leoni leoni, GameTime gameTime)
         {
             //Camera Collision Box
             /*Get Keyboard movement*/
@@ -43,26 +46,32 @@ namespace Imaginecup2013.Physics
                     //Turn Jumping on
                     jumping = true;
                     jumpCur = 0;
+                    jumpComplete = false;
                 }
             }
             
             //Get Jump
-            int yval = -11;
+            float yval = leoni.cameraBox.LinearVelocity.Y;
             if (jumping)
             {    
                 if (jumpCur++>=jumpLength)
                 {
+                    if (leoni.cameraBox.LinearVelocity.Y < -1)
+                    {
+                        jumpComplete = true;                        
+                    }
                     //Wait until we are not moving, or just barely going down hill
-                    if (Math.Abs(leoni.cameraBox.LinearVelocity.Y) < jumpThreshold)
+                    if (Math.Abs(leoni.cameraBox.LinearVelocity.Y) < jumpThreshold && jumpComplete == true)
                     {
                         jumping = false;//We can jump again!
-                    }                    
+                    }
                 }
                 else
                 {
-                     yval = 11;//Go Up
+                     yval = 5;//Go Up
                 }                    
             }
+
             //Set velocity based on input
             leoni.cameraBox.LinearVelocity = leoni.Camera.WorldMatrix.Left * tbX * cameraSpeed + leoni.Camera.WorldMatrix.Forward * tbY * cameraSpeed;
 

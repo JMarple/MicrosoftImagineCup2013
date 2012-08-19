@@ -12,12 +12,12 @@ using BEPUphysics.MathExtensions;
 
 namespace Imaginecup2013.Setup
 {
-    public class InitializeWorld
+    public static class InitializeWorld
     {
-        public InitializeWorld(Leoni game)
+        public static void setup(Leoni game)
         {
             //Initilize ground
-            InitializeGround ground = new InitializeGround(game);
+            InitializeGround.setup(game);
             
             //Initilize camera collision
             game.cameraBox = new Sphere(new Vector3(0, 3, 10), 1, 1);
