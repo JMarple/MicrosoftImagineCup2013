@@ -8,9 +8,9 @@ using BEPUphysics.Entities.Prefabs;
 
 namespace Imaginecup2013.Input
 {
-    class UpdateKeyboardInput
+    static class UpdateKeyboardInput
     {
-        public void update(Leoni game)
+        public static void update(Leoni game)
         {
             //Update Keyboard and Mouse states
             game.KeyboardState = Keyboard.GetState();

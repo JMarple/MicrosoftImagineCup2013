@@ -6,15 +6,14 @@ using Microsoft.Xna.Framework;
 
 namespace Imaginecup2013.Physics
 {
-    public class UpdatePhysics
-    {
-        UpdateCamera updateGameCamera = new UpdateCamera();
+    public static class UpdatePhysics
+    {       
 
         //Update physics
-        public void update(Leoni leoni, GameTime gameTime)
+        public static void update(Leoni leoni, GameTime gameTime)
         {
             //updates game camera
-            updateGameCamera.update(leoni, gameTime);
+            UpdateCamera.update(leoni, gameTime);
             
             //Steps the simulation forward one time step.
             leoni.space.Update();            

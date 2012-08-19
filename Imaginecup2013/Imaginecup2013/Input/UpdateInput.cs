@@ -5,13 +5,11 @@ using System.Text;
 
 namespace Imaginecup2013.Input
 {
-    public class UpdateInput
+    public static class UpdateInput
     {
-        UpdateKeyboardInput updateKeyBoard = new UpdateKeyboardInput();
-
-        public void update(Leoni game)
+        public static void update(Leoni game)
         {
-            updateKeyBoard.update(game);
+            UpdateKeyboardInput.update(game);
         }
     }
 }

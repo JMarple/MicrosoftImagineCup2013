@@ -1,21 +1,19 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using BEPUphysics.DataStructures;
+using System.Collections.Generic;
 
 namespace Imaginecup2013
 {
-    /// <summary>
-    /// Component that draws a model.
-    /// </summary>
     public class StaticModel : DrawableGameComponent
     {
         Model model;
-        /// <summary>
-        /// Base transformation to apply to the model.
-        /// </summary>
+
+        // Base transformation to apply to the model.
         public Matrix Transform;
         Matrix[] boneTransforms;
         Effect effect;
-        public Texture tex;
+        public Texture tex;        
 
         /// <summary>
         /// Creates a new StaticModel.
@@ -30,64 +28,58 @@ namespace Imaginecup2013
             effect = (game as Leoni).simpleEffect;
 
             //Collect any bone transformations in the model itself.
-            //The default cube model doesn't have any, but this allows the StaticModel to work with more complicated shapes.
-            /*foreach (ModelMesh mesh in model.Meshes)
-            {
-                foreach (BasicEffect effect in mesh.Effects)
-                {
-                    effect.EnableDefaultLighting();
-                }
-            }*/
             boneTransforms = new Matrix[model.Bones.Count];
             foreach (ModelMesh mesh in model.Meshes)
             {
                 foreach (ModelMeshPart part in mesh.MeshParts)
+                {
                     part.Effect = effect;
+                }
             }
         }
 
-        public StaticModel(Model model, Matrix transform, Game game, Effect effect)
-            : base(game)
+        public StaticModel(Model model, Matrix transform, Game game, Effect effect) : base(game)
         {
             this.model = model;
             this.Transform = transform;
             this.effect = effect;
-            //Collect any bone transformations in the model itself.
-            //The default cube model doesn't have any, but this allows the StaticModel to work with more complicated shapes.
-            /*foreach (ModelMesh mesh in model.Meshes)
-            {
-                foreach (BasicEffect effect in mesh.Effects)
-                {
-                    effect.EnableDefaultLighting();
-                }
-            }*/
+
             boneTransforms = new Matrix[model.Bones.Count];
             foreach (ModelMesh mesh in model.Meshes)
             {
-                foreach (ModelMeshPart part in mesh.MeshParts)
-                    part.Effect = effect;
-            }
-        }
+                
+                foreach (ModelMeshPart part in mesh.MeshParts)                
+                    part.Effect = effect;                
+            }            
+        }        
 
         public override void Draw(GameTime gameTime)
-        {
+        {   
+           
+
             model.CopyAbsoluteBoneTransformsTo(boneTransforms);
-            foreach (ModelMesh mesh in model.Meshes)
+            effect.CurrentTechnique = effect.Techniques["Main"];
+            effect.Parameters["View"].SetValue((Game as Leoni).Camera.ViewMatrix);
+            effect.Parameters["Projection"].SetValue((Game as Leoni).Camera.ProjectionMatrix);           
+
+            foreach (EffectPass pass in effect.CurrentTechnique.Passes)
             {
-                foreach (Effect effect in mesh.Effects)
+                foreach (ModelMesh mesh in model.Meshes)
                 {
-                    effect.CurrentTechnique = effect.Techniques["Main"];
-                    effect.Parameters["World"].SetValue( boneTransforms[mesh.ParentBone.Index] * Transform );
-                    effect.Parameters["View"].SetValue( (Game as Leoni).Camera.ViewMatrix );
-                    effect.Parameters["Projection"].SetValue((Game as Leoni).Camera.ProjectionMatrix);
+                    //Set Effect values
+                    effect.Parameters["World"].SetValue(boneTransforms[mesh.ParentBone.Index] * Transform);
                     effect.Parameters["tex"].SetValue(tex);
 
-                    /*effect.World = boneTransforms[mesh.ParentBone.Index] * Transform;
-                    effect.View = (Game as Leoni).Camera.ViewMatrix;
-                    effect.Projection = (Game as Leoni).Camera.ProjectionMatrix;*/
+                    //Apply effect
+                    pass.Apply();
+
+                    //Render Scene
+                    (Game as Leoni).GraphicsDevice.SetVertexBuffer(mesh.MeshParts[mesh.ParentBone.Index].VertexBuffer);
+                    (Game as Leoni).GraphicsDevice.Indices = mesh.MeshParts[mesh.ParentBone.Index].IndexBuffer;
+                    (Game as Leoni).GraphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, mesh.MeshParts[mesh.ParentBone.Index].NumVertices, 0, mesh.MeshParts[mesh.ParentBone.Index].PrimitiveCount); 
                 }
-                mesh.Draw();
-            }
+            }           
+            
             base.Draw(gameTime);
         }
     }

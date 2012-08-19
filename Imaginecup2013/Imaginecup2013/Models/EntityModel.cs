@@ -9,14 +9,9 @@ namespace Imaginecup2013
     /// </summary>
     public class EntityModel : DrawableGameComponent
     {
-        /// <summary>
-        /// Entity that this model follows.
-        /// </summary>
         Entity entity;
         Model model;
-        /// <summary>
-        /// Base transformation to apply to the model.
-        /// </summary>
+
         public Matrix Transform;
         Matrix[] boneTransforms;
         Effect effect;
@@ -41,13 +36,6 @@ namespace Imaginecup2013
             //The default cube model doesn't have any, but this allows the EntityModel to work with more complicated shapes.
             boneTransforms = new Matrix[model.Bones.Count];
             
-            /*foreach (ModelMesh mesh in model.Meshes)
-            {
-                foreach (BasicEffect effect in mesh.Effects)
-                {
-                    effect.EnableDefaultLighting();
-                }
-            }*/
             foreach (ModelMesh mesh in model.Meshes)
             {
                 foreach (ModelMeshPart part in mesh.MeshParts)
@@ -82,25 +70,32 @@ namespace Imaginecup2013
             //in the list to familiarize yourself with it.
             Matrix worldMatrix = Transform * entity.WorldTransform;
 
+            model.CopyAbsoluteBoneTransformsTo(boneTransforms);            
 
-            model.CopyAbsoluteBoneTransformsTo(boneTransforms);
-            foreach (ModelMesh mesh in model.Meshes)
+            //Set variables that will be the same for every mesh
+            effect.CurrentTechnique = effect.Techniques["Main"];
+            effect.Parameters["View"].SetValue((Game as Leoni).Camera.ViewMatrix);
+            effect.Parameters["Projection"].SetValue((Game as Leoni).Camera.ProjectionMatrix);           
+
+            foreach (EffectPass pass in effect.CurrentTechnique.Passes)
             {
-                foreach (Effect effect in mesh.Effects)
+                foreach (ModelMesh mesh in model.Meshes)
                 {
-                    /*
-                    effect.World = boneTransforms[mesh.ParentBone.Index] * worldMatrix;
-                    effect.View = (Game as Leoni).Camera.ViewMatrix;
-                    effect.Projection = (Game as Leoni).Camera.ProjectionMatrix;*/
-
-                    effect.CurrentTechnique = effect.Techniques["Main"];
+                    //Set Effect values
                     effect.Parameters["World"].SetValue(boneTransforms[mesh.ParentBone.Index] * worldMatrix);
-                    effect.Parameters["View"].SetValue((Game as Leoni).Camera.ViewMatrix);
-                    effect.Parameters["Projection"].SetValue((Game as Leoni).Camera.ProjectionMatrix);
                     effect.Parameters["tex"].SetValue(tex);
+
+                    //Apply effect
+                    pass.Apply();
+
+                    //Render Scene
+                    (Game as Leoni).GraphicsDevice.SetVertexBuffer(mesh.MeshParts[mesh.ParentBone.Index].VertexBuffer);
+                    (Game as Leoni).GraphicsDevice.Indices = mesh.MeshParts[mesh.ParentBone.Index].IndexBuffer;
+                    (Game as Leoni).GraphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, mesh.MeshParts[mesh.ParentBone.Index].NumVertices, 0, mesh.MeshParts[mesh.ParentBone.Index].PrimitiveCount); 
                 }
-                mesh.Draw();
             }
+
+
             base.Draw(gameTime);
         }
     }

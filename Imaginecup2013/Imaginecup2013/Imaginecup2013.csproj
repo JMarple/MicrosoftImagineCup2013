@@ -88,6 +88,7 @@
     <Compile Include="Rendering\SaveScene.cs" />
     <Compile Include="Rendering\SetupGraphics.cs" />
     <Compile Include="Setup\InitializeEntityModel.cs" />
+    <Compile Include="Setup\InitializeLoader.cs" />
     <Compile Include="Setup\InitializeWorld.cs" />
     <Compile Include="Setup\InitializeGround.cs" />
     <Compile Include="Setup\InitializeStaticModel.cs" />
