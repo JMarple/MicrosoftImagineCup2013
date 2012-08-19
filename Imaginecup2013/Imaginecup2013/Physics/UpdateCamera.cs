@@ -10,6 +10,9 @@ namespace Imaginecup2013.Physics
     public class UpdateCamera
     {
         const int cameraSpeed = 10;
+        bool jumping;
+        int jumpCur;
+        double jumpLength = 20;//20 loops (60 frames per second)
 
         public void update(Leoni leoni, GameTime gameTime)
         {
@@ -30,7 +33,40 @@ namespace Imaginecup2013.Physics
             if (Keyboard.GetState().IsKeyDown(Keys.S))
                 tbY -= 1;
 
-            leoni.cameraBox.LinearVelocity = leoni.Camera.WorldMatrix.Left * tbX * cameraSpeed + leoni.Camera.WorldMatrix.Forward * tbY * cameraSpeed + new Vector3(0, -11f, 0);       
+            //Check to see if the user wants to jump
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                //Are we in a jump right now?
+                if (jumping == false)
+                {
+                    //Turn Jumping on
+                    jumping = true;
+                    jumpCur = 0;
+                }
+            }
+            
+            //Get Jump
+            int yval = -11;
+            if (jumping)
+            {    
+                if (jumpCur++>jumpLength)
+                {
+                    //Wait until we are not moving, or just barely going down hill
+                    if (Math.Abs(leoni.cameraBox.LinearVelocity.Y) < 3f)
+                    {
+                        jumping = false;//We can jump again!
+                    }                    
+                }
+                else
+                {
+                     yval = 11;//Go Up
+                }                    
+            }
+            //Set velocity based on input
+            leoni.cameraBox.LinearVelocity = leoni.Camera.WorldMatrix.Left * tbX * cameraSpeed + leoni.Camera.WorldMatrix.Forward * tbY * cameraSpeed;
+
+            //Filter to input to prevent people from going up unless we want them to
+            leoni.cameraBox.LinearVelocity = new Vector3(leoni.cameraBox.LinearVelocity.X, yval, leoni.cameraBox.LinearVelocity.Z);
             
             leoni.Camera.Position = new Vector3(leoni.cameraBox.Position.X, leoni.cameraBox.Position.Y + 2, leoni.cameraBox.Position.Z);
 

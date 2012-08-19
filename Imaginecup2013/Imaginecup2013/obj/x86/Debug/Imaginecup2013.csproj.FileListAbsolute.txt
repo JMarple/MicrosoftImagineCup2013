@@ -24,3 +24,4 @@ C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Terr
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PostEffects\PostEffect.xnb
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PreEffects\SimpleEffect.xnb
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PreEffects\TexturingEffect.xnb
+C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Font\foglihten_48.xnb

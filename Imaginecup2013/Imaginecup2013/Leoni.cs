@@ -37,16 +37,19 @@ namespace Imaginecup2013
         public Effect textureEffect;
         public Effect postEffect;
 
+        /* Fonts */
+        public SpriteFont fogFont;
+
         /* Input */
         public KeyboardState KeyboardState;
         public MouseState MouseState;        
 
         /* Update classes */
-        UpdatePhysics updatePhysics;
-        UpdateInput updateInput;
-        SetupGraphics setupGraphics;
-        SaveScene saveScene;
-        DrawGraphics drawGraphics;
+        public UpdatePhysics updatePhysics;
+        public UpdateInput updateInput;
+        public SetupGraphics setupGraphics;
+        public SaveScene saveScene;
+        public DrawGraphics drawGraphics;
 
         /* Render Targets and Maps*/
         public RenderTarget2D baseTarget;
@@ -97,6 +100,9 @@ namespace Imaginecup2013
             simpleEffect = Content.Load<Effect>("Effects\\PreEffects\\SimpleEffect");
             textureEffect = Content.Load<Effect>("Effects\\PreEffects\\TexturingEffect");
             postEffect = Content.Load<Effect>("Effects\\PostEffects\\PostEffect");
+
+            //Fonts
+            fogFont = Content.Load<SpriteFont>("Font\\foglihten_48");
 
             //Load and initilize the world
             InitializeWorld initWorld = new InitializeWorld(this);            

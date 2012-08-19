@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Imaginecup2013.Rendering
 {
-    class SetupGraphics
+    public class SetupGraphics
     {
         //Setup graphics for drawing
         public void draw(Leoni leoni, RenderTarget2D target)

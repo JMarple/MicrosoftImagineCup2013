@@ -105,6 +105,15 @@
         <Value>2012-08-18T00:31:56.8881809-04:00</Value>
       </Dependency>
     </Item>
+    <Item>
+      <Source>Font\foglihten_48.bmp</Source>
+      <Name>Font\foglihten_48</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>FontTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Font\foglihten_48.xnb</Output>
+      <Time>2012-08-18T21:52:04.8533453-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{A4DBD2FF-1E76-40A3-AF49-22C788B8BEA6}</ContentProjectGUID>

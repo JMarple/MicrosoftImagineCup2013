@@ -115,22 +115,23 @@ namespace Imaginecup2013
         /// <param name="dt">Timestep duration.</param>
         public void Update(float dt)
         {
-#if XBOX360
+        #if XBOX360
             //Turn based on gamepad input.
             Yaw += Game.GamePadState.ThumbSticks.Right.X * -1.5f * dt;
             Pitch += Game.GamePadState.ThumbSticks.Right.Y * 1.5f * dt;
-#else
+        #else
+
             //Turn based on mouse input.
             Yaw += (200 - Game.MouseState.X) * dt * .12f;
             Pitch += (200 - Game.MouseState.Y) * dt * .12f;
-#endif
+
+        #endif
+
+
             Mouse.SetPosition(200, 200);
-
             WorldMatrix = Matrix.CreateFromAxisAngle(Vector3.Right, Pitch) * Matrix.CreateFromAxisAngle(Vector3.Up, Yaw);
-
-
             float distance = Speed * dt;
-#if XBOX360
+        #if XBOX360
             //Move based on gamepad input.
                 MoveForward(Game.GamePadState.ThumbSticks.Left.Y * distance);
                 MoveRight(Game.GamePadState.ThumbSticks.Left.X * distance);
@@ -138,7 +139,7 @@ namespace Imaginecup2013
                     MoveUp(distance);
                 if (Game.GamePadState.IsButtonDown(Buttons.RightStick))
                     MoveUp(-distance);
-#else
+        #else
 
             //Scoot the camera around depending on what keys are pressed.
             /*if (Game.KeyboardState.IsKeyDown(Keys.W))
@@ -153,7 +154,7 @@ namespace Imaginecup2013
                 MoveUp(distance);
             if (Game.KeyboardState.IsKeyDown(Keys.Z))
                 MoveUp(-distance);*/
-#endif
+        #endif
 
             WorldMatrix = WorldMatrix * Matrix.CreateTranslation(Position);
             ViewMatrix = Matrix.Invert(WorldMatrix);

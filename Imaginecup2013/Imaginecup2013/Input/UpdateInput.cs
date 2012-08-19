@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Imaginecup2013.Input
 {
-    class UpdateInput
+    public class UpdateInput
     {
         UpdateKeyboardInput updateKeyBoard = new UpdateKeyboardInput();
 
