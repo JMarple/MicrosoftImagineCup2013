@@ -13,6 +13,7 @@ namespace Imaginecup2013.Physics
         bool jumping;
         int jumpCur;
         double jumpLength = 20;//20 loops (60 frames per second)
+        float jumpThreshold = 3f;
 
         public void update(Leoni leoni, GameTime gameTime)
         {
@@ -37,7 +38,7 @@ namespace Imaginecup2013.Physics
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
                 //Are we in a jump right now?
-                if (jumping == false)
+                if (jumping == false && Math.Abs(leoni.cameraBox.LinearVelocity.Y) < jumpThreshold)
                 {
                     //Turn Jumping on
                     jumping = true;
@@ -49,10 +50,10 @@ namespace Imaginecup2013.Physics
             int yval = -11;
             if (jumping)
             {    
-                if (jumpCur++>jumpLength)
+                if (jumpCur++>=jumpLength)
                 {
                     //Wait until we are not moving, or just barely going down hill
-                    if (Math.Abs(leoni.cameraBox.LinearVelocity.Y) < 3f)
+                    if (Math.Abs(leoni.cameraBox.LinearVelocity.Y) < jumpThreshold)
                     {
                         jumping = false;//We can jump again!
                     }                    
