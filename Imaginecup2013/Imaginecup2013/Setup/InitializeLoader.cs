@@ -12,7 +12,8 @@ namespace Imaginecup2013.Setup
         {
             //Effects
             game.simpleEffect = game.Content.Load<Effect>("Effects\\PreEffects\\SimpleEffect");
-            game.textureEffect = game.Content.Load<Effect>("Effects\\PreEffects\\TexturingEffect");
+            game.textureEffect = game.Content.Load<Effect>("Effects\\PreEffects\\DepthEffect");
+            game.shadowEffect = game.Content.Load<Effect>("Effects\\PreEffects\\DirectionalLighting");
             game.postEffect = game.Content.Load<Effect>("Effects\\PostEffects\\PostEffect");
 
             //Fonts

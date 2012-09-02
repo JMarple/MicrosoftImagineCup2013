@@ -18,15 +18,12 @@ VertexShaderOutput SimpleVertex( float4 inPos : POSITION0, float3 inNormal: NORM
 
 /** Pixel Shader **/
 float4 SimplePixel(VertexShaderOutput input) : COLOR0
-{
-	//Light Position in the world
-    float3 LightPosition = float3(0, 30, 0);
-
+{    
 	//Get Texture
 	float4 texColor = tex2D(textureSampler, input.TexCoords);	
 	
 	//Get Diffuse Lighting
-	float diffuseLightingFactor = DotProduct(LightPosition, input.Position3D, input.Normal);
+	float diffuseLightingFactor = DotProduct(lightPosition, input.Position3D, input.Normal);
    
 	return texColor*(diffuseLightingFactor+Ambient);
 }

@@ -35,11 +35,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Terrain\playground.fbx">
-      <Name>playground</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Effects\PreEffects\SimpleEffect.fx">
@@ -63,18 +58,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Terrain\playgroundTex.jpg">
-      <Name>playgroundTex</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Effects\PreEffects\EffectVar.fxh">
       <Name>EffectVar</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </None>
+    <Compile Include="Terrain\Ground\floor1.fbx">
+      <Name>floor1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Terrain\Objects\plantpot1.fbx">
+      <Name>plantpot1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Effects\PreEffects\TexturingEffect.fx">
@@ -88,6 +86,41 @@
       <Name>foglihten_48</Name>
       <Importer>TextureImporter</Importer>
       <Processor>FontTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Effects\PreEffects\DirectionalLighting.fx">
+      <Name>DirectionalLighting</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Terrain\Objects\tPlantPot1.jpg">
+      <Name>tPlantPot1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Terrain\playgroundTex.jpg">
+      <Name>playgroundTex</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Terrain\Ground\gravel1.jpg">
+      <Name>gravel1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Effects\PreEffects\DepthEffect.fx">
+      <Name>DepthEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

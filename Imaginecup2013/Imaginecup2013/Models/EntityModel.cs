@@ -75,16 +75,18 @@ namespace Imaginecup2013
             //Set variables that will be the same for every mesh
             effect.CurrentTechnique = effect.Techniques["Main"];
             effect.Parameters["View"].SetValue((Game as Leoni).Camera.ViewMatrix);
-            effect.Parameters["Projection"].SetValue((Game as Leoni).Camera.ProjectionMatrix);           
+            effect.Parameters["Projection"].SetValue((Game as Leoni).Camera.ProjectionMatrix);
+            effect.Parameters["cameraPosition"].SetValue((Game as Leoni).Camera.Position);
 
             foreach (EffectPass pass in effect.CurrentTechnique.Passes)
-            {
+            {                
+
                 foreach (ModelMesh mesh in model.Meshes)
                 {
                     //Set Effect values
                     effect.Parameters["World"].SetValue(boneTransforms[mesh.ParentBone.Index] * worldMatrix);
                     effect.Parameters["tex"].SetValue(tex);
-
+                    
                     //Apply effect
                     pass.Apply();
 
@@ -94,7 +96,6 @@ namespace Imaginecup2013
                     (Game as Leoni).GraphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, mesh.MeshParts[mesh.ParentBone.Index].NumVertices, 0, mesh.MeshParts[mesh.ParentBone.Index].PrimitiveCount); 
                 }
             }
-
 
             base.Draw(gameTime);
         }

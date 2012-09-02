@@ -14,7 +14,6 @@ using Imaginecup2013.Physics;
 using Imaginecup2013.Input;
 using Imaginecup2013.Rendering;
 
-
 namespace Imaginecup2013 
 {
 
@@ -36,6 +35,7 @@ namespace Imaginecup2013
         public Effect simpleEffect;
         public Effect textureEffect;
         public Effect postEffect;
+        public Effect shadowEffect;
 
         /* Fonts */
         public SpriteFont fogFont;
@@ -47,7 +47,8 @@ namespace Imaginecup2013
         /* Render Targets and Maps*/
         public RenderTarget2D baseTarget;
         public Texture2D baseMap;
-
+        public RenderTarget2D depthTarget;
+        public Texture2D depthMap;
 
         public Leoni()
         {
@@ -56,7 +57,6 @@ namespace Imaginecup2013
             graphics.PreferredBackBufferHeight = screenSizeHeight;
             Content.RootDirectory = "Content";
         }
-
        
         protected override void Initialize()
         {
@@ -95,25 +95,36 @@ namespace Imaginecup2013
             UpdateInput.update(this);
 
             //Update physics engine
-            UpdatePhysics.update(this, gameTime);   
+            UpdatePhysics.update(this, gameTime);
   
             base.Update(gameTime);
+        }
+
+        public Matrix lightProjectionMatrix;
+        public Vector3 lightPos;
+
+        private void updateLightData()
+        {
+            lightPos = new Vector3(0, 2, -2);
+            Matrix lightsView = Matrix.CreateLookAt(lightPos, new Vector3(0, 0, 0), new Vector3(0, 1, 0));
+            Matrix lightProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, 1f, 5f, 100f);
+            lightProjectionMatrix = lightsView * lightProjection;
         }
 
        
         protected override void Draw(GameTime gameTime)
         {
             //Draw basic scene
-            SetupGraphics.draw(this, baseTarget);
+            SetupScene.draw(this, baseTarget);
             
             //Trigger all drawing data
-            base.Draw(gameTime);//Look at EntityModel and StaticModel for code
+            base.Draw(gameTime);//Look at EntityModel and StaticModel for code;
 
             //Save scene to map
             baseMap = SaveScene.save(this, baseTarget);
 
             //Draw to screen
-            DrawGraphics.draw(this, baseMap);            
+            DrawScene.draw(this, baseMap);            
         }
     }
 }

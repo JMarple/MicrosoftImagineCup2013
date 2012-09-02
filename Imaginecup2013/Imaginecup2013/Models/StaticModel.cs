@@ -60,7 +60,8 @@ namespace Imaginecup2013
             model.CopyAbsoluteBoneTransformsTo(boneTransforms);
             effect.CurrentTechnique = effect.Techniques["Main"];
             effect.Parameters["View"].SetValue((Game as Leoni).Camera.ViewMatrix);
-            effect.Parameters["Projection"].SetValue((Game as Leoni).Camera.ProjectionMatrix);           
+            effect.Parameters["Projection"].SetValue((Game as Leoni).Camera.ProjectionMatrix);
+            
 
             foreach (EffectPass pass in effect.CurrentTechnique.Passes)
             {
@@ -76,8 +77,9 @@ namespace Imaginecup2013
                     //Render Scene
                     (Game as Leoni).GraphicsDevice.SetVertexBuffer(mesh.MeshParts[mesh.ParentBone.Index].VertexBuffer);
                     (Game as Leoni).GraphicsDevice.Indices = mesh.MeshParts[mesh.ParentBone.Index].IndexBuffer;
-                    (Game as Leoni).GraphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, mesh.MeshParts[mesh.ParentBone.Index].NumVertices, 0, mesh.MeshParts[mesh.ParentBone.Index].PrimitiveCount); 
+                    (Game as Leoni).GraphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, mesh.MeshParts[mesh.ParentBone.Index].NumVertices, 0, mesh.MeshParts[mesh.ParentBone.Index].PrimitiveCount);
                 }
+
             }           
             
             base.Draw(gameTime);

@@ -84,9 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Leoni.cs" />
-    <Compile Include="Rendering\DrawGraphics.cs" />
+    <Compile Include="Rendering\DrawScene.cs" />
     <Compile Include="Rendering\SaveScene.cs" />
-    <Compile Include="Rendering\SetupGraphics.cs" />
+    <Compile Include="Rendering\SetupScene.cs" />
     <Compile Include="Setup\InitializeEntityModel.cs" />
     <Compile Include="Setup\InitializeLoader.cs" />
     <Compile Include="Setup\InitializeWorld.cs" />
