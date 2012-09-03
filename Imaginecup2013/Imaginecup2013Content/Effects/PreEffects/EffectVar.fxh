@@ -2,13 +2,18 @@
 float4x4 World;
 float4x4 View;
 float4x4 Projection;
+
 float Ambient = 0.5;
+float4x4 lightView;
+float4x4 lightProjection;
+
+float3 cameraPosition = float3(0, 5, 0);
+
+
 
 //Point lighting
 float3 Color = float3(1, 1, 1);//Color of the light
-float3 cameraPosition = float3(0, 5, 0);
 float3 lightPosition = float3(0, 5, 0);
-float4x4 lightProjection;
 float lightRadius = 25.0f;
 float lightIntensity = 1.0f;
 

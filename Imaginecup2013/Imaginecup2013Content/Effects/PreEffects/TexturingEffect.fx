@@ -1,4 +1,5 @@
 #include "EffectVar.fxh"
+#include "DepthEffect.fxh"
 
 /** Vertex Shader **/
 VertexShaderOutput SimpleVertex( float4 inPos : POSITION0, float3 inNormal: NORMAL0, float2 inTexCoords : TEXCOORD0)

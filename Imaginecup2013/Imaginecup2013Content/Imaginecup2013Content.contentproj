@@ -117,11 +117,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Effects\PreEffects\DepthEffect.fx">
+    <None Include="Effects\PreEffects\DepthEffect.fxh">
       <Name>DepthEffect</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
-    </Compile>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,4 +12,3 @@ Content\Terrain\Objects\tPlantPot1.xnb
 Content\Terrain\Ground\gravel1.xnb
 Content\Terrain\Objects\plantpot1.xnb
 Content\Terrain\Objects\tPlantPot1_0.xnb
-Content\Effects\PreEffects\DepthEffect.xnb

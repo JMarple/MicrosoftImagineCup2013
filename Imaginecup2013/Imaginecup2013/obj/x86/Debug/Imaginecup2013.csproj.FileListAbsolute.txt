@@ -31,4 +31,3 @@ C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Terr
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Terrain\Ground\gravel1.xnb
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Terrain\Objects\plantpot1.xnb
 C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Terrain\Objects\tPlantPot1_0.xnb
-C:\Users\Justin\MIC2013\Imaginecup2013\Imaginecup2013\bin\x86\Debug\Content\Effects\PreEffects\DepthEffect.xnb

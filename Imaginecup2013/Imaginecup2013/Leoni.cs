@@ -50,6 +50,14 @@ namespace Imaginecup2013
         public RenderTarget2D depthTarget;
         public Texture2D depthMap;
 
+
+        /* Lighting info */
+        public Vector3 lightPos;
+        public Matrix lightsView;
+        public Matrix lightProjection;
+        public Matrix lightProjectionMatrix;
+        public bool isShadowMapping = false;
+
         public Leoni()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -62,7 +70,8 @@ namespace Imaginecup2013
         {
             //Setup render targets
             baseTarget = new RenderTarget2D(graphics.GraphicsDevice, 1024, 1024, true, graphics.GraphicsDevice.DisplayMode.Format, DepthFormat.Depth24);
-
+            depthTarget = new RenderTarget2D(graphics.GraphicsDevice, 1024, 1024, true, graphics.GraphicsDevice.DisplayMode.Format, DepthFormat.Depth24);
+            
             //Setup the camera.
             Camera = new Camera(this, new Vector3(0, 3, 10), 5);
            
@@ -96,31 +105,29 @@ namespace Imaginecup2013
 
             //Update physics engine
             UpdatePhysics.update(this, gameTime);
-  
+
             base.Update(gameTime);
         }
 
-        public Matrix lightProjectionMatrix;
-        public Vector3 lightPos;
-
-        private void updateLightData()
-        {
-            lightPos = new Vector3(0, 2, -2);
-            Matrix lightsView = Matrix.CreateLookAt(lightPos, new Vector3(0, 0, 0), new Vector3(0, 1, 0));
-            Matrix lightProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, 1f, 5f, 100f);
-            lightProjectionMatrix = lightsView * lightProjection;
-        }
-
+        
        
         protected override void Draw(GameTime gameTime)
         {
+            isShadowMapping = true;
+
             //Draw basic scene
-            SetupScene.draw(this, baseTarget);
+            SetupScene.draw(this, depthTarget);
             
             //Trigger all drawing data
             base.Draw(gameTime);//Look at EntityModel and StaticModel for code;
 
             //Save scene to map
+            depthMap = SaveScene.save(this, depthTarget);
+
+            //Draw regular scene
+            isShadowMapping = false;
+            SetupScene.draw(this, baseTarget);
+            base.Draw(gameTime);
             baseMap = SaveScene.save(this, baseTarget);
 
             //Draw to screen

@@ -54,13 +54,19 @@ namespace Imaginecup2013
         }        
 
         public override void Draw(GameTime gameTime)
-        {   
-           
+        {           
 
             model.CopyAbsoluteBoneTransformsTo(boneTransforms);
-            effect.CurrentTechnique = effect.Techniques["Main"];
-            effect.Parameters["View"].SetValue((Game as Leoni).Camera.ViewMatrix);
-            effect.Parameters["Projection"].SetValue((Game as Leoni).Camera.ProjectionMatrix);
+
+            
+            
+
+            //Should we be trying to get a depth map or get a normal map?
+            if ((Game as Leoni).isShadowMapping)            
+                effect.CurrentTechnique = effect.Techniques["Depth"];          
+            else            
+                effect.CurrentTechnique = effect.Techniques["Main"];
+                
             
 
             foreach (EffectPass pass in effect.CurrentTechnique.Passes)
@@ -68,6 +74,11 @@ namespace Imaginecup2013
                 foreach (ModelMesh mesh in model.Meshes)
                 {
                     //Set Effect values
+                    effect.Parameters["lightView"].SetValue((Game as Leoni).lightsView);
+                    effect.Parameters["lightProjection"].SetValue((Game as Leoni).lightProjection);
+                    effect.Parameters["cameraPosition"].SetValue((Game as Leoni).lightPos);
+                    effect.Parameters["View"].SetValue((Game as Leoni).Camera.ViewMatrix);
+                    effect.Parameters["Projection"].SetValue((Game as Leoni).Camera.ProjectionMatrix);
                     effect.Parameters["World"].SetValue(boneTransforms[mesh.ParentBone.Index] * Transform);
                     effect.Parameters["tex"].SetValue(tex);
 
