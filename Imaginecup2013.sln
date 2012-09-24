@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imaginecup2013", "Imaginecu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imaginecup2013Content", "Imaginecup2013\Imaginecup2013Content\Imaginecup2013Content.contentproj", "{A4DBD2FF-1E76-40A3-AF49-22C788B8BEA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomModelEffectPipeline", "CustomModelEffectPipeline\CustomModelEffectPipeline.csproj", "{30126A68-BB98-431F-A1D7-0ADB5F55D091}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -17,6 +19,10 @@ Global
 		{5BFC4C3C-5672-444C-B7B6-1F9A3B48940B}.Release|x86.Build.0 = Release|x86
 		{A4DBD2FF-1E76-40A3-AF49-22C788B8BEA6}.Debug|x86.ActiveCfg = Debug|x86
 		{A4DBD2FF-1E76-40A3-AF49-22C788B8BEA6}.Release|x86.ActiveCfg = Release|x86
+		{30126A68-BB98-431F-A1D7-0ADB5F55D091}.Debug|x86.ActiveCfg = Debug|x86
+		{30126A68-BB98-431F-A1D7-0ADB5F55D091}.Debug|x86.Build.0 = Debug|x86
+		{30126A68-BB98-431F-A1D7-0ADB5F55D091}.Release|x86.ActiveCfg = Debug|x86
+		{30126A68-BB98-431F-A1D7-0ADB5F55D091}.Release|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

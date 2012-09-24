@@ -8,11 +8,13 @@ VertexShaderOutput SimpleVertex( float4 inPos : POSITION0, float3 inNormal: NORM
     float4 worldPosition = mul(inPos, World);
     float4 viewPosition = mul(worldPosition, View);
 	float4x4 preWorldViewProjection = mul(World, View);
+	float4x4 vLightsWorldViewProjection = mul(World, lightView);
 
-    output.Position = mul(viewPosition, Projection);
+    output.Position = mul(viewPosition, Projection);	
 	output.TexCoords = inTexCoords;
 	output.Normal = normalize(mul(inNormal, (float3x3)World));  
 	output.Position3D = mul(inPos, World);
+	output.Pos2DAsSeenByLight = mul(inPos, vLightsWorldViewProjection);
     return output;
 }
 
@@ -27,7 +29,7 @@ float4 SimplePixel(VertexShaderOutput input) : COLOR0
 	
 	//Get Diffuse Lighting
 	float diffuseLightingFactor = DotProduct(LightPosition, input.Position3D, input.Normal);
-   
+  	
 	return baseColor*(diffuseLightingFactor+Ambient);
 }
 

@@ -33,7 +33,7 @@
     <Compile Include="Models\cube.fbx">
       <Name>cube</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>EnvironmentMappedModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -63,15 +63,20 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </None>
-    <Compile Include="Terrain\Ground\floor1.fbx">
+    <Compile Include="Terrain\floor1.fbx">
       <Name>floor1</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>EnvironmentMappedModelProcessor</Processor>
     </Compile>
-    <Compile Include="Terrain\Objects\plantpot1.fbx">
+    <Compile Include="Terrain\plantpot1.fbx">
       <Name>plantpot1</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>EnvironmentMappedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\test.fbx">
+      <Name>test</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>EnvironmentMappedModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -96,7 +101,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Terrain\Objects\tPlantPot1.jpg">
+    <Compile Include="Terrain\tPlantPot1.jpg">
       <Name>tPlantPot1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -110,7 +115,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Terrain\Ground\gravel1.jpg">
+    <Compile Include="Models\gravel1.jpg">
       <Name>gravel1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -123,6 +128,27 @@
       <Processor>EffectProcessor</Processor>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Terrain\gravel1.jpg">
+      <Name>gravel1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CustomModelEffectPipeline\CustomModelEffectPipeline.csproj">
+      <Project>{30126A68-BB98-431F-A1D7-0ADB5F55D091}</Project>
+      <Name>CustomModelEffectPipeline</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\tPlantPot1.jpg">
+      <Name>tPlantPot1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

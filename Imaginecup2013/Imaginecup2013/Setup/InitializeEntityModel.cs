@@ -18,14 +18,14 @@ namespace Imaginecup2013.Setup
     class InitializeEntityModel
     {
         //Constructor
-        public InitializeEntityModel(Entity e, Model model, Leoni game, Texture tex)
+        public InitializeEntityModel(Entity e, Model model, Leoni game)
         {
-            add(e, model, game, tex);
+            add(e, model, game);
         }
         //Blank Constructor
         public InitializeEntityModel() { }
 
-        public void add(Entity e, Model model, Leoni game, Texture tex)
+        public void add(Entity e, Model model, Leoni game)
         {
             //Add collisions
             game.space.Add(e);
@@ -38,7 +38,6 @@ namespace Imaginecup2013.Setup
                 //Setup Entity Model
                 Matrix scaling = Matrix.CreateScale(_box.Width, _box.Height, _box.Length);
                 EntityModel eModel = new EntityModel(_e, model, scaling, game, game.textureEffect);
-                eModel.tex = tex;
 
                 //Add the new model to the world
                 game.Components.Add(eModel);

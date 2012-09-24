@@ -6,20 +6,23 @@ VertexShaderOutput DepthVertex( float4 inPos : POSITION0, float3 inNormal: NORMA
     float4 worldPosition = mul(inPos, World);
     float4 viewPosition = mul(worldPosition, lightView);
 	float4x4 preWorldViewProjection = mul(World, lightView);
+	float4x4 vLightsWorldViewProjection = mul(World, lightView);
 
-    output.Position = mul(viewPosition, lightProjection);
+    output.Position = mul(viewPosition, lightProjection);	
 	output.TexCoords = inTexCoords;
 	output.Normal = normalize(mul(inNormal, (float3x3)World));  
+	output.Pos2DAsSeenByLight = mul(inPos, vLightsWorldViewProjection);
 	output.Position3D = mul(inPos, World);
+
     return output;
 }
 
 /** Pixel Shader **/
 float4 DepthPixel(VertexShaderOutput input) : COLOR0
 {  
-	float dist = distance(cameraPosition, input.Position3D);
+	float dist = distance(lightPosition, input.Position3D);
 
-	return 1-dist/15;
+	return dist/30;	
 }
 
 /** Technique Simple **/

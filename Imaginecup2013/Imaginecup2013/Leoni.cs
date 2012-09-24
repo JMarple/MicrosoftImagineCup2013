@@ -16,7 +16,6 @@ using Imaginecup2013.Rendering;
 
 namespace Imaginecup2013 
 {
-
     public class Leoni : Microsoft.Xna.Framework.Game 
     {
         /* Constants / Basic Information */
@@ -49,7 +48,6 @@ namespace Imaginecup2013
         public Texture2D baseMap;
         public RenderTarget2D depthTarget;
         public Texture2D depthMap;
-
 
         /* Lighting info */
         public Vector3 lightPos;
